@@ -6,94 +6,87 @@
     <!-- if any user is logined -->
     {{#if currentUser}}
         <div class="row">
-            <div class="col s6 m6 l8">
-              <br><br><br><br>
-                {{> input}}
+          <div class="col s6 m6 l8">
+            <br><br><br><br>
+              {{> input}}
+          </div>
+          <!-- cards for room -->
+          <div class="col s6 m6 l4">
+            <div class="right card-panel teal">
+              <span class=" white-text">
+               {{> rooms}}
+              </span>
             </div>
-            <div class="col s6 m6 l4">
-              <div class="right card-panel teal">
-                <span class=" white-text">
-              {{> rooms}}
-                </span>
+          </div>
+         </div>
+          <!-- card for messages -->
+         <div class="row">
+          <div class="card-panel card medium transparent">
+            <span class=" indigo-text">
+             {{> messages}}
+            </span>
+          </div>
+         </div>
+         {{else}}
+           <!-- if there is no user  -->
+         <div class="row">
+          <div class="col s12 m12 l12">
+            <div class="card">
+              <div class="card-image">
+                <img src="images/banner2.jpg">
+                <span class="card-title">Live Chat</span>
+              </div>
+              <div class="card-content indigo-text">
+                <p>Live chat is method of using technology to bring people and ideas together despite of geographical barrier.
+                  The technology has been available for years but the acceptance was quit recent. So live chat will be availing the facility to talk to friends in an efficient way
+                </p>
               </div>
             </div>
-
-        </div>
-        <div class="row">
-
-              <div class="card-panel card large transparent">
-                <span class=" indigo-text">
-              {{> messages}}
-                </span>
-              </div>
-
-            </div>
-        {{else}}
-        <!-- if there is no user  -->
-        <div class="row">
-              <div class="col s12 m12 l12">
-                <div class="card">
-                  <div class="card-image">
-                    <img src="images/banner2.jpg">
-                    <span class="card-title">Live Chat</span>
-                  </div>
-                  <div class="card-content indigo-text">
-                    <p>Live chat is method of using technology to bring people and ideas together despite of geographical barrier.
-                      The technology has been available for years but the acceptance was quit recent. So live chat will be availing the facility to talk to friends in an efficient way
-                  </p>
-                  </div>
-                </div>
-              </div>
-
-            </div>
+          </div>
+         </div>
         {{/if}}
-      </div>
+  </div>
 </template>
 <template name="home">
   <nav class="red" role="navigation">
-     <div class="nav-wrapper container">
-       <a id="logo-container" href="#"><img src="images/l.png"></a>
-         <ul class="right hide-on-med-and-down">
-            <li><a>{{> loginButtons }}</a></li>
-         </ul>
-     </div>
-    </nav>
+   <div class="nav-wrapper container">
+    <a id="logo-container" href="#"><img src="images/l.png"></a>
+     <ul class="right hide-on-med-and-down">
+        <li><a>{{> loginButtons }}</a></li>
+     </ul>
+   </div>
+  </nav>
     <br><br><br>
     {{> login}}
 </template>
-
 <template name="myFooter">
   <footer class="page-footer red">
-      <div class="container">
-        <div class="row">
-          <div class="col l6 s12">
-           <h5 class="white-text">Reach On</h5>
-           <p class="grey-text text-lighten-4">S-45, Second Floor, Telecom Layout</p>
-           <p class="grey-text text-lighten-4">11th Main Road, Nagvara Bangalore 560026</p>
-          </div>
-          <div class="col l3 s12">
-            <h5 class="white-text">Connect On</h5>
-            <ul>
-               <li><a href="https://www.facebook.com/"><img src="images/ffb.png" /></a>
-               <a href="https://twitter.com/"><img src="images/twiter.png"/></a></li>
-               <p class="grey-text text-lighten-4">Talk To Us: 1800 4800 24</p>
-             </ul>
-          </div>
-         </div>
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+         <h5 class="white-text">Reach On</h5>
+         <p class="grey-text text-lighten-4">S-45, Second Floor, Telecom Layout</p>
+         <p class="grey-text text-lighten-4">11th Main Road, Nagvara Bangalore 560026</p>
         </div>
-        <div class="footer-copyright">
-           © 2014 Copyright @ Amit
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect On</h5>
+          <ul>
+             <li><a href="https://www.facebook.com/"><img src="images/ffb.png" /></a>
+             <a href="https://twitter.com/"><img src="images/twiter.png"/></a></li>
+             <p class="grey-text text-lighten-4">Talk To Us: 1800 4800 24</p>
+           </ul>
         </div>
-      </footer>
-
+       </div>
+      </div>
+      <div class="footer-copyright">
+         © 2014 Copyright @ Amit
+      </div>
+   </footer>
 </template>
-
 <template name="complexLayout">
   <div class="left">
     {{> yield region="menu"}}
   </div>
-
-
   <div class="main">
     {{> yield}}
   </div>
@@ -105,36 +98,40 @@
 <template name="input">
   <div class="row">
     <div class="col s6">
-    <input type="text" id="msg" placeholder="Your message goes here...">
-  </div>
-    <div><input type="button" value="Submit" class="btn btn-primary sendMsg"></div>
+     <input type="text" id="msg" placeholder="Your message goes here...">
+    </div>
+    <div>
+      <input type="button" value="Submit" class="waves-effect waves-light btn">
+    </div>
   </div>
 </template>
 
 <template name="messages">
   <div class="row">
-    <div class="blue-text"><h4>Room: {{roomname}}</h4></div>
+    <div class="blue-text">
+      <h4>Room: {{roomname}}</h4>
+    </div>
     <div id="messages">
-        {{#each messages}}
-            {{> message}}
-        {{/each}}
+      {{#each messages}}
+          {{> message}}
+      {{/each}}
     </div>
   </div>
 </template>
 
 <template name="message">
-    <p><strong>{{user}}</strong> <span>({{timestamp}})</span>: <i>{{msg}}</i></p>
+    <p><strong class="red-text">{{user}}</strong> <span>({{timestamp}})</span>: <i>{{msg}}</i></p>
 </template>
 
 <template name="rooms">
     <h4>Join a room:</h4>
     <ul>
-    {{#each rooms}}
-        {{> room}}
-    {{/each}}
+      {{#each rooms}}
+          {{> room}}
+      {{/each}}
     </ul>
 </template>
 
 <template name="room">
-    <li style="cursor: pointer; {{roomstyle}}">{{roomname}}</li>
+    <li class="rooms">{{roomname}}</li>
 </template>
