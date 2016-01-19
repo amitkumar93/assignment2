@@ -12,9 +12,9 @@
 // Router.configure({
 //     layoutTemplate: 'layoutTemplate'
 // });
-Router.configure({
-  layoutTemplate: 'ApplicationLayout'
-});
+// Router.configure({
+//   layoutTemplate: 'ApplicationLayout'
+// });
 
 
 

@@ -74,7 +74,7 @@ if (Meteor.isServer) {
     Messages.remove({});
     Rooms.remove({});
     if (Rooms.find().count() === 0) {
-      ["Meteor", "JavaScript"].forEach(function(r) {
+      ["Settlin", "Linking"].forEach(function(r) {
         Rooms.insert({roomname: r});
       });
     }

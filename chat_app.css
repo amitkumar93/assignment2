@@ -2,3 +2,7 @@
 .rooms {
   cursor: pointer
 }
+
+.scrol{
+      overflow: scroll;
+}
