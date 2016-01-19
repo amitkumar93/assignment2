@@ -10,7 +10,7 @@ if (Meteor.isClient) {
   Session.setDefault("roomname", "Meteor");
 
   Template.input.events({
-    'click .sendMsg': function(e) {
+    'click .btn': function(e) {
        _sendMessage();
     },
     'keyup #msg': function(e) {
