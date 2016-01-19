@@ -7,7 +7,7 @@ if (Meteor.isClient) {
   });
   Meteor.subscribe("rooms");
   Meteor.subscribe("messages");
-  Session.setDefault("roomname", "Meteor");
+  Session.setDefault("roomname", "Settlin");
 
   Template.input.events({
     'click .btn': function(e) {
@@ -54,18 +54,6 @@ if (Meteor.isClient) {
     }
   });
 
-  Template.room.helpers({
-	roomstyle: function() {
-      return Session.equals("roomname", this.roomname) ? "font-weight: bold" : "";
-    }
-  });
-
-  Template.chat.helpers({
-    release: function() {
-      return Meteor.release;
-    }
-  });
-
 }
 
 
@@ -74,7 +62,7 @@ if (Meteor.isServer) {
     Messages.remove({});
     Rooms.remove({});
     if (Rooms.find().count() === 0) {
-      ["Meteor", "JavaScript"].forEach(function(r) {
+      ["Settlin", "Linking"].forEach(function(r) {
         Rooms.insert({roomname: r});
       });
     }
