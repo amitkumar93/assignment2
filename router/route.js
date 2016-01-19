@@ -15,3 +15,13 @@
 Router.configure({
   layoutTemplate: 'ApplicationLayout'
 });
+
+
+
+Router.route('home', {
+  path: '/',
+  layoutTemplate: 'complexLayout',
+  yieldTemplates: {
+    'myFooter': {to: 'footer'}
+  }
+});
