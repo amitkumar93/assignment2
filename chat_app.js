@@ -7,7 +7,7 @@ if (Meteor.isClient) {
   });
   Meteor.subscribe("rooms");
   Meteor.subscribe("messages");
-  Session.setDefault("roomname", "Meteor");
+  Session.setDefault("roomname", "Settlin");
 
   Template.input.events({
     'click .btn': function(e) {
@@ -51,18 +51,6 @@ if (Meteor.isClient) {
   Template.rooms.helpers({
     rooms: function() {
       return Rooms.find();
-    }
-  });
-
-  Template.room.helpers({
-	roomstyle: function() {
-      return Session.equals("roomname", this.roomname) ? "font-weight: bold" : "";
-    }
-  });
-
-  Template.chat.helpers({
-    release: function() {
-      return Meteor.release;
     }
   });
 
