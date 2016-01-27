@@ -1,6 +1,21 @@
 <head>
   <title>Live Chat</title>
 </head>
+
+<template name="home">
+  <nav class="red" role="navigation">
+   <div class="nav-wrapper container">
+    <a id="logo-container" href="#"><img src="images/l.png"></a>
+     <ul class="right hide-on-med-and-down">
+        <li><a>{{> loginButtons }}</a></li>
+     </ul>
+	 </div>
+  </nav>
+    <br><br><br>
+    {{> login}}
+		{{> myFooter}}
+</template>
+
 <template name="login">
   <div class="container">
     <!-- if any user is logined -->
@@ -47,18 +62,7 @@
         {{/if}}
   </div>
 </template>
-<template name="home">
-  <nav class="red" role="navigation">
-   <div class="nav-wrapper container">
-    <a id="logo-container" href="#"><img src="images/l.png"></a>
-     <ul class="right hide-on-med-and-down">
-        <li><a>{{> loginButtons }}</a></li>
-     </ul>
-   </div>
-  </nav>
-    <br><br><br>
-    {{> login}}
-</template>
+
 <template name="myFooter">
   <footer class="page-footer red">
     <div class="container">
@@ -82,17 +86,6 @@
          © 2014 Copyright @ Amit
       </div>
    </footer>
-</template>
-<template name="complexLayout">
-  <!-- <div class="left">
-    {{> yield region="menu"}}
-  </div> -->
-  <div class="main">
-    {{> yield}}
-  </div>
-  <div class="bottom">
-    {{> yield region="footer"}}
-  </div>
 </template>
 
 <template name="input">
