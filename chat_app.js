@@ -3,23 +3,22 @@ Rooms = new Meteor.Collection("rooms");
 
 if (Meteor.isClient) {
   Accounts.ui.config({
-    passwordSignupFields: 'USERNAME_ONLY'
+    passwordSignupFields: "USERNAME_ONLY"
   });
   Meteor.subscribe("rooms");
   Meteor.subscribe("messages");
   Session.setDefault("roomname", "Settlin");
 
   Template.input.events({
-    'click .btn': function(e) {
+    "click .btn": function(e) {
        _sendMessage();
     },
-    'keyup #msg': function(e) {
-      if (e.type == "keyup" && e.which == 13) {
+    "keyup #msg": function(e) {
+      if (e.type === "keyup" && e.which === 13) {
         _sendMessage();
       }
     }
   });
-
   _sendMessage = function() {
     var el = document.getElementById("msg");
     Messages.insert({user: Meteor.user().username, msg: el.value, ts: new Date(), room: Session.get("roomname")});
@@ -43,7 +42,7 @@ if (Meteor.isClient) {
   });
 
   Template.rooms.events({
-    'click li': function(e) {
+    "click li": function(e) {
       Session.set("roomname", e.target.innerText);
     }
   });
@@ -53,12 +52,11 @@ if (Meteor.isClient) {
       return Rooms.find();
     }
   });
-
 }
 
 
 if (Meteor.isServer) {
-  Meteor.startup(function () {
+  Meteor.startup(function() {
     Messages.remove({});
     Rooms.remove({});
     if (Rooms.find().count() === 0) {
@@ -80,7 +78,7 @@ if (Meteor.isServer) {
     }
   });
   Messages.deny({
-    insert: function (userId, doc) {
+    insert: function(userId, doc) {
       return (userId === null);
     },
     update: function (userId, doc, fieldNames, modifier) {
@@ -91,15 +89,15 @@ if (Meteor.isServer) {
     }
   });
   Messages.allow({
-    insert: function (userId, doc) {
+    insert: function(userId, doc) {
       return (userId !== null);
     }
   });
 
-  Meteor.publish("rooms", function () {
+  Meteor.publish("rooms", function() {
     return Rooms.find();
   });
-  Meteor.publish("messages", function () {
+  Meteor.publish("messages", function() {
     return Messages.find({}, {sort: {ts: -1}});
   });
 }
