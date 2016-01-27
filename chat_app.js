@@ -59,7 +59,7 @@ if (Meteor.isClient) {
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
-    Messages.remove({});
+    //Messages.remove({});
     Rooms.remove({});
     if (Rooms.find().count() === 0) {
       ["Settlin", "Linking"].forEach(function(r) {
