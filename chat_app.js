@@ -22,7 +22,11 @@ if (Meteor.isClient) {
 
   _sendMessage = function() {
     var el = document.getElementById("msg");
-    Messages.insert({user: Meteor.user().username, msg: el.value, ts: new Date(), room: Session.get("roomname")});
+    if(el.value.trim().length)
+      Messages.insert({user: Meteor.user().username, msg: el.value, ts: new Date(), room: Session.get("roomname")});
+    else {
+      alert("Please enter a message!");
+    }
     el.value = "";
     el.focus();
   };
