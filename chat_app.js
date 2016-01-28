@@ -20,7 +20,12 @@ if (Meteor.isClient) {
 	});
 	_sendMessage = function() {
 		var el = document.getElementById("msg");
-		Messages.insert({user: Meteor.user().username, msg: el.value, ts: new Date(), room: Session.get("roomname")});
+		if (el.value.trim().length) {
+			Messages.insert({user: Meteor.user().username, msg: el.value, ts: new Date(), room: Session.get("roomname")});
+		}
+		else {
+			alert("Please enter a message and then submit");
+		}
 		el.value = "";
 		el.focus();
 	};
@@ -55,7 +60,7 @@ if (Meteor.isClient) {
 
 if (Meteor.isServer) {
 	Meteor.startup(function() {
-		Messages.remove({});
+		//Messages.remove({});
 		Rooms.remove({});
 		if (Rooms.find().count() === 0) {
 			["Settlin", "Linking"].forEach(function(r) {
